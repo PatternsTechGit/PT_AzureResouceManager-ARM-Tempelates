@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "bbbank_storage": {
+            "type": "string",
+            "metadata": {
+                "description": "creating a test storage ARM template"
+            },
+            "minLength": 3,
+            "maxLength": 24
+        }
+    },
+    "functions": [],                    
+    "variables": {},
+    "resources": [{
+        "name": "[parameters('bbbank_storage')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2021-04-01",
+        "tags": {
+            "displayName": "BBBankARMStorage"
+        },
+        "location": "[resourceGroup().location]",
+        "kind": "StorageV2",
+        
+        "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+        }
+    }],
+    "outputs": {}
+}
